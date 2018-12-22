@@ -85,12 +85,31 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         insert(node);
     }
 
+    public V get(K k) {
+        Node<K, V> v = find(k);
+        return NIL == v ? null : v.val;
+    }
+
     public void remove(K k) {
         Node<K, V> node = find(k);
         if (NIL == node) {
             return;
         }
         delete(node);
+    }
+
+    private Node<K, V> find(K k) {
+        Node<K, V> y = this.root;
+        while (NIL != y) {
+            if (y.key.compareTo(k) < 0) {
+                y = y.right;
+            } else if (y.key.compareTo(k) > 0) {
+                y = y.left;
+            } else {
+                return y;
+            }
+        }
+        return NIL;
     }
 
     /**
@@ -179,19 +198,6 @@ public class RedBlackTree<K extends Comparable<K>, V> {
         v.parent = u.parent;
     }
 
-    private Node<K, V> find(K k) {
-        Node<K, V> y = this.root;
-        while (NIL != y) {
-            if (y.key.compareTo(k) < 0) {
-                y = y.right;
-            } else if (y.key.compareTo(k) > 0) {
-                y = y.left;
-            } else {
-                return y;
-            }
-        }
-        return NIL;
-    }
 
     /**
      * delete process of the rbTree
