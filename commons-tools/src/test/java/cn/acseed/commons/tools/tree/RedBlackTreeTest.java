@@ -18,5 +18,17 @@ public class RedBlackTreeTest {
         tree.put("J", 10);
         tree.put("K", 11);
         tree.put("L", 12);
+
+
+        tree.remove("D");
+        tree.remove("E");
+        tree.remove("F");
+        tree.remove("G");
+        tree.remove("H");
+        tree.remove("I");
+        tree.remove("J");
+        tree.remove("K");
+        tree.remove("L");
+        System.out.println();
     }
 }
